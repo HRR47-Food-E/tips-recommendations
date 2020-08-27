@@ -81,9 +81,20 @@ const addRestaurant = ({restaurant, articles, features}, cb) => {
   });
 };
 
+const removeRestaurant = (id, cb) => {
+  connection.query(`DELETE FROM restaurants WHERE id = ${id}`, (err, data) => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null, data);
+    }
+  })
+}
+
 module.exports = {
   getRestaurantInfo,
   getRestaurantArticles,
   getRestaurantFeatures,
-  addRestaurant
+  addRestaurant,
+  removeRestaurant
 };

@@ -38,7 +38,7 @@ CREATE TABLE `articles` (
   `title` VARCHAR(255) NULL DEFAULT NULL,
   `image` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`restaurant_id`) REFERENCES restaurants(id)
+  FOREIGN KEY (`restaurant_id`) REFERENCES restaurants(id) ON DELETE CASCADE
 );
 
 CREATE TABLE `features` (
@@ -46,7 +46,7 @@ CREATE TABLE `features` (
   `restaurant_id` INTEGER,
   `title` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`restaurant_id`) REFERENCES restaurants(id)
+  FOREIGN KEY (`restaurant_id`) REFERENCES restaurants(id) ON DELETE CASCADE
 );
 
 -- ---

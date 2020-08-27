@@ -50,7 +50,13 @@ app.get(`/api/features/:id`, (req, res) => {
 });
 
 app.post('/api/restaurant', (req, res) => {
-  db.addRestaurant(req.body, (err, data) => {
+  db.addRestaurant(req.body, (err) => {
+    res.sendStatus(err ? 500 : 200);
+  });
+});
+
+app.delete('/api/restaurant/:id', (req, res) => {
+  db.removeRestaurant(req.params.id, (data) => {
     res.sendStatus(err ? 500 : 200);
   })
 })
