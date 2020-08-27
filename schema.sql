@@ -18,11 +18,11 @@ CREATE TABLE `restaurants` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `restaurant_name` VARCHAR(255) NULL DEFAULT NULL,
   `dish_name1` VARCHAR(255) NULL DEFAULT NULL,
-  `dish_image1` VARCHAR(255) NULL DEFAULT NULL,
+  `dish_image1` INTEGER,
   `dish_name2` VARCHAR(255) NULL DEFAULT NULL,
-  `dish_image2` VARCHAR(255) NULL DEFAULT NULL,
+  `dish_image2` INTEGER,
   `dish_name3` VARCHAR(255) NULL DEFAULT NULL,
-  `dish_image3` VARCHAR(255) NULL DEFAULT NULL,
+  `dish_image3` INTEGER,
   `tip` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
@@ -36,7 +36,7 @@ CREATE TABLE `articles` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `restaurant_id` INTEGER,
   `title` VARCHAR(255) NULL DEFAULT NULL,
-  `image` VARCHAR(255) NULL DEFAULT NULL,
+  `image` INTEGER,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`restaurant_id`) REFERENCES restaurants(id) ON DELETE CASCADE
 );
