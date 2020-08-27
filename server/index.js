@@ -49,6 +49,12 @@ app.get(`/api/features/:id`, (req, res) => {
   });
 });
 
+app.post('/api/restaurant', (req, res) => {
+  db.addRestaurant(req.body, (err, data) => {
+    res.sendStatus(err ? 500 : 200);
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
