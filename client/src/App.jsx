@@ -52,11 +52,11 @@ class App extends React.Component {
         this.setState({
           restaurantName: data.restaurant_name,
           dishName1: data.dish_name1,
-          dishImage1: data.dish_image1,
+          dishImage1: data.dish_image1.toString().padStart(4, 0),
           dishName2: data.dish_name2,
-          dishImage2: data.dish_image2,
+          dishImage2: data.dish_image2.toString().padStart(4, 0),
           dishName3: data.dish_name3,
-          dishImage3: data.dish_image3,
+          dishImage3: data.dish_image3.toString().padStart(4, 0),
           tip: data.tip,
         });
       })
@@ -71,6 +71,7 @@ class App extends React.Component {
   fetchArticles(i) {
     axios.get(`http://localhost:3003/api/articles/${i}`)
       .then(({ data }) => {
+        data.forEach(el => { el.image = el.image.toString().padStart(4, 0) })
         this.setState({ articles: data });
       })
       .then(() => {

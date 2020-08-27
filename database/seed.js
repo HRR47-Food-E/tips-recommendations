@@ -26,9 +26,9 @@ function generateIndividualRestaurantData() {
   restaurantData.dishName2 = faker.commerce.product();
   restaurantData.dishName3 = faker.commerce.product();
 
-  restaurantData.dishImage1 = faker.image.food();
-  restaurantData.dishImage2 = faker.image.food();
-  restaurantData.dishImage3 = faker.image.food();
+  restaurantData.dishImage1 = getRandomInteger(1, 750);
+  restaurantData.dishImage2 = getRandomInteger(1, 750);
+  restaurantData.dishImage3 = getRandomInteger(1, 750);
 
   restaurantData.tip = faker.lorem.sentence();
 
@@ -63,7 +63,7 @@ const articleData = {
 
 function generateIndividualArticleData() {
   articleData.articleTitle = faker.lorem.sentence();
-  articleData.articleImage = faker.image.nightlife();
+  articleData.articleImage = getRandomInteger(1, 750);
   return articleData;
 }
 
