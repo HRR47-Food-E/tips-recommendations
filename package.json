@@ -57,7 +57,7 @@
   "scripts": {
     "airbnb": "eslint --ignore-path .gitignore .",
     "build": "webpack --config webpack.config.js",
-    "schema": "mysql -u root < schema.sql;",
+    "mysqlschema": "mysql -u root < mysqlschema.sql;",
     "seed": "node database/seed.js",
     "server": "nodemon server/index.js",
     "test": "jest",
