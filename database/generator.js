@@ -5,10 +5,12 @@ const writeStream = fs.createWriteStream('./database/data.csv');
 
 // Generates data for 10 million primary records
 const writeData = (writer, cb) => {
+  console.log('Generating data...')
+  console.log('[                    ]')
   console.time('writeData');
   var i = 10000000;
   var id = 0;
-  var data;
+  var data, j;
   write();
   function write() {
     var ok = true;
@@ -16,6 +18,10 @@ const writeData = (writer, cb) => {
       --i;
       ++id;
       data = JSON.stringify(generateData(id));
+      if (i % 500000 === 0) {
+        j = i / 500000;
+        console.log(`[${'='.repeat(20 - j)}${' '.repeat(j)}]`);
+      }
       if (i === 0) {
         writeStream.write(data, cb);
       } else {
@@ -86,7 +92,7 @@ writeData(writeStream, (err, data) => {
   if (err) {
     console.log(`ERROR: ${err}`);
   } else {
-    console.timeEnd('writeData');
     console.log(`Done generating data!`);
+    console.timeEnd('writeData');
   }
 });

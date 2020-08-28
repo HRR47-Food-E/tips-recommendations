@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/index.js');
+const db = require('../database/mysqlModel.js');
 const path = require('path');
 const cors = require('cors');
 
@@ -8,12 +8,8 @@ const port = 3003;
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, '../client/dist')));
-// app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.static('client/dist'));
 app.use('/:id', express.static('client/dist'));
-
-
 
 app.get(`/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
