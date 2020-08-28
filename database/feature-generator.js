@@ -8,7 +8,7 @@ const writeFeatureData = (writer, cb) => {
   console.log('Generating data...')
   console.log('[                    ]')
   console.time('featureData');
-  var i = 10;
+  var i = 10000000;
   var id = 0;
   var data, j;
   writeStream.write('restaurant_id,title\n')
@@ -21,7 +21,7 @@ const writeFeatureData = (writer, cb) => {
       rand = randInt(1, 5);
       for (k = 0; k < rand; ++k) {
         data = generateFeatureData(id);
-        if (i % 500000 === 0) {
+        if (i % 500000 === 0 && k === rand - 1) {
           j = i / 500000;
           console.log(`[${'='.repeat(20 - j)}${' '.repeat(j)}]`);
         }

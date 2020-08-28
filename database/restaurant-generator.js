@@ -8,7 +8,7 @@ const writeRestaurantData = (writer, cb) => {
   console.log('Generating data...')
   console.log('[                    ]')
   console.time('restaurantData');
-  var i = 100;
+  var i = 10000000;
   var id = 0;
   var data, j;
   writeStream.write('restaurant_name,dish_name1,dish_name2,dish_name3,dish_image1,dish_image2,dish_image3,tip\n')

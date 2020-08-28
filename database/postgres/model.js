@@ -16,17 +16,24 @@ const addArticles = `COPY articles(restaurant_id,title,image) FROM '${__dirname 
 
 const addFeatures = `COPY features(restaurant_id,title) FROM '${__dirname + '/../feature-data.csv'}' DELIMITER ',' CSV HEADER;`;
 
-client.query(addRestaurants)
-  .then(() => {
-    console.log('Restaurant added!');
-    client.query(addArticles)
-      .then(() => {
-        console.log('Articles added!');
-        client.query(addFeatures)
-          .then(() => {
-            console.log('Features added!');
-            client.end();
-          });
-      });
-  })
-  .catch(err => console.log(err));
+const seedDatabase = () => {
+  console.log('Seeding database...')
+  console.time('seed');
+  client.query(addRestaurants)
+    .then(() => {
+      console.log('Restaurants added!');
+      client.query(addArticles)
+        .then(() => {
+          console.log('Articles added!');
+          client.query(addFeatures)
+            .then(() => {
+              console.log('Features added!');
+              client.end();
+              console.timeEnd('seed');
+            });
+        });
+    })
+    .catch(err => console.log(err));
+}
+
+seedDatabase();
