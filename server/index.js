@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/mysqlModel.js');
+const db = require('../database/mysql/model.js');
 const path = require('path');
 const cors = require('cors');
 
@@ -13,7 +13,6 @@ app.use('/:id', express.static('client/dist'));
 
 app.get(`/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
-
   db.getRestaurantInfo(restaurantId, (error, data) => {
     if (error) {
       console.log('Error at server/restaurants GET request');
