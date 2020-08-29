@@ -6,12 +6,12 @@ const writeStream = fs.createWriteStream('./database/article-data.csv');
 // Generates article data for 10 million primary records
 const writeArticleData = (writer, cb) => {
   console.log('Generating data...')
-  console.log('[                    ]')
+  console.log('[                    ]');
   console.time('articleData');
   var i = 10000000;
   var id = 0;
   var data, j, rand, k;
-  writeStream.write('restaurant_id,title,image\n')
+  writeStream.write('restaurant_id,title,image\n');
   write();
   function write() {
     var ok = true;
