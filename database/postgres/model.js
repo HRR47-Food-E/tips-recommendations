@@ -1,31 +1,37 @@
 const client = require('./config.js');
 
 const getRestaurantInfo = function (restaurantId, callback) {
+  console.time(`Restaurant id ${restaurantId}`);
   client.query(`SELECT * FROM restaurants WHERE id = ${restaurantId}`, (error, {rows}) => {
     if (error) {
       callback(error, null);
       return;
     }
+    console.timeEnd(`Restaurant id ${restaurantId}`);
     callback(null, rows);
   });
 };
 
 const getRestaurantArticles = function (restaurantId, callback) {
+  console.time(`Restaurant id ${restaurantId}`);
   client.query(`SELECT * FROM articles WHERE restaurant_id = ${restaurantId}`, (error, {rows}) => {
     if (error) {
       callback(error, null);
       return;
     }
+    console.timeEnd(`Restaurant id ${restaurantId}`);
     callback(null, rows);
   });
 };
 
 const getRestaurantFeatures = function (restaurantId, callback) {
+  console.time(`Restaurant id ${restaurantId}`);
   client.query(`SELECT * FROM features WHERE restaurant_id = ${restaurantId}`, (error, {rows}) => {
     if (error) {
       callback(error, null);
       return;
     }
+    console.timeEnd(`Restaurant id ${restaurantId}`);
     callback(null, rows);
   });
 };
@@ -35,6 +41,7 @@ const addRestaurant = ({restaurant, articles, features}, cb) => {
   var columns = Object.keys(restaurant).join(', ');
   var values = JSON.stringify(Object.values(restaurant));
   values = values.substring(1, values.length - 1).replace(/"/g,"'");
+  console.time('Added record to db');
   client.query(`INSERT INTO restaurants (${columns}) VALUES (${values}) RETURNING id;`, (err, response) => {
     if (err) {
       cb(err);
@@ -61,6 +68,7 @@ const addRestaurant = ({restaurant, articles, features}, cb) => {
                   cb(err);
                   return;
                 } else if (i === features.length - 1) {
+                  console.timeEnd('Added record to db');
                   cb(null);
                 }
               });
@@ -72,9 +80,22 @@ const addRestaurant = ({restaurant, articles, features}, cb) => {
   });
 };
 
+const removeRestaurant = (restaurantId, cb) => {
+  console.time(`${restaurantId} removed from db!`)
+  client.query(`DELETE FROM restaurants WHERE id = ${restaurantId}`, (err, data) => {
+    if (err) {
+      cb(err);
+    } else {
+      console.timeEnd(`${restaurantId} removed from db!`)
+      cb(null, data);
+    }
+  });
+};
+
 module.exports = {
   getRestaurantInfo,
   getRestaurantArticles,
   getRestaurantFeatures,
-  addRestaurant
+  addRestaurant,
+  removeRestaurant
 };

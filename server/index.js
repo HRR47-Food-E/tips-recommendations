@@ -13,12 +13,10 @@ app.use('/:id', express.static('client/dist'));
 
 app.get(`/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
-  console.time(`Restaurant id ${restaurantId}`);
   db.getRestaurantInfo(restaurantId, (error, data) => {
     if (error) {
       console.log('Error at server/restaurants GET request');
     } else {
-      console.timeEnd(`Restaurant id ${restaurantId}`);
       res.send(data);
     }
   });
@@ -26,12 +24,10 @@ app.get(`/api/tips/:id`, (req, res) => {
 
 app.get(`/api/articles/:id`, (req, res) => {
   const restaurantId = req.params.id;
-  console.time(`Restaurant id ${restaurantId}`);
   db.getRestaurantArticles(restaurantId, (error, data) => {
     if (error) {
       console.log('Error at server/articles GET request');
     } else {
-      console.timeEnd(`Restaurant id ${restaurantId}`);
       res.send(data);
     }
   });
@@ -39,27 +35,24 @@ app.get(`/api/articles/:id`, (req, res) => {
 
 app.get(`/api/features/:id`, (req, res) => {
   const restaurantId = req.params.id;
-  console.time(`Restaurant id ${restaurantId}`);
   db.getRestaurantFeatures(restaurantId, (error, data) => {
     if (error) {
       console.log('Error at server/articles GET request');
     } else {
-      console.timeEnd(`Restaurant id ${restaurantId}`);
       res.send(data);
     }
   });
 });
 
 app.post('/api/restaurant', (req, res) => {
-  console.time('Added record to db');
   db.addRestaurant(req.body, (err) => {
-    console.timeEnd('Added record to db');
     res.sendStatus(err ? 500 : 200);
   });
 });
 
 app.delete('/api/restaurant/:id', (req, res) => {
-  db.removeRestaurant(req.params.id, (data) => {
+  const restaurantId = req.params.id;
+  db.removeRestaurant(restaurantId, (err) => {
     res.sendStatus(err ? 500 : 200);
   });
 });

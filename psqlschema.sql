@@ -19,7 +19,6 @@ CREATE TABLE "restaurants" (
 );
 
 CREATE TABLE "articles" (
-  id SERIAL PRIMARY KEY,
   restaurant_id INT,
   title VARCHAR(255),
   image INT,
@@ -27,7 +26,6 @@ CREATE TABLE "articles" (
 );
 
 CREATE TABLE "features" (
-  id SERIAL PRIMARY KEY,
   restaurant_id INT,
   title VARCHAR(255),
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE

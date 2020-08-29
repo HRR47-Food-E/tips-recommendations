@@ -11,14 +11,14 @@ const seedDatabase = () => {
   console.log('Seeding database...')
   console.time('seed');
   client.query(addRestaurants)
-    .then(() => {
-      console.log('Restaurants added!');
+    .then(({rowCount}) => {
+      console.log(`${rowCount} restaurants added!`);
       client.query(addArticles)
-        .then(() => {
-          console.log('Articles added!');
+        .then(({rowCount}) => {
+          console.log(`${rowCount} articles added!`);
           client.query(addFeatures)
-            .then(() => {
-              console.log('Features added!');
+            .then(({rowCount}) => {
+              console.log(`${rowCount} features added!`);
               client.end();
               console.timeEnd('seed');
             });
