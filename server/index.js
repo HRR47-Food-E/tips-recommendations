@@ -51,7 +51,9 @@ app.get(`/api/features/:id`, (req, res) => {
 });
 
 app.post('/api/restaurant', (req, res) => {
+  console.time('Added record to db');
   db.addRestaurant(req.body, (err) => {
+    console.timeEnd('Added record to db');
     res.sendStatus(err ? 500 : 200);
   });
 });
