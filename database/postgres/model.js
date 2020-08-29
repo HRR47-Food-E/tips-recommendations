@@ -92,10 +92,29 @@ const removeRestaurant = (restaurantId, cb) => {
   });
 };
 
+const updateRestaurant = ({restaurant, articles, features}, id, cb) => {
+  var columns = Object.keys(restaurant);
+  var updateRestaurant = '';
+  columns.forEach((column) => {
+    updateRestaurant += `${column} = "${restaurant[column]}",`;
+  });
+  updateRestaurant = updateRestaurant.slice(0, -1).replace(/"/g,"'");
+  console.time(`${id} updated!`)
+  client.query(`UPDATE restaurants SET ${updateRestaurant} WHERE id = ${id};`, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.timeEnd(`${id} updated!`)
+      cb(null);
+    }
+  });
+};
+
 module.exports = {
   getRestaurantInfo,
   getRestaurantArticles,
   getRestaurantFeatures,
   addRestaurant,
-  removeRestaurant
+  removeRestaurant,
+  updateRestaurant
 };

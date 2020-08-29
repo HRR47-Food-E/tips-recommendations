@@ -59,17 +59,17 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
    "restaurant": {
        "restaurant_name": "name",
        "dish_name1": "dishName1",
-       "dish_image1": "dishImage1",
+       "dish_image1": 1,
        "dish_name2": "dishName2",
-       "dish_image2": "dishImage2",
+       "dish_image2": 2,
        "dish_name3": "dishName3",
-       "dish_image3": "dishImage3",
+       "dish_image3": 3,
        "tip": "tip"
    },
    "articles": [
        {
            "title": "article1Title",
-           "image": "article1Image"
+           "image": 4
        }
    ],
    "features": [
@@ -95,14 +95,14 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```sh
 {
    "restaurant": {
-       "restaurant_name": "name",
-       "dish_name1": "dishName1",
-       "dish_image1": "dishImage1",
-       "dish_name2": "dishName2",
-       "dish_image2": "dishImage2",
-       "dish_name3": "dishName3",
-       "dish_image3": "dishImage3",
-       "tip": "tip"
+       "restaurant_name": "newName",
+       "dish_name1": "newDishName1",
+       "dish_image1": 1,
+       "dish_name2": "newDishName2",
+       "dish_image2": 2,
+       "dish_name3": "newDishName3",
+       "dish_image3": 3,
+       "tip": "newTip"
    }
 }
 ```
