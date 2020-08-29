@@ -16,6 +16,7 @@
     "jest-enzyme": "^7.1.2",
     "lodash": "^4.17.20",
     "mongoose": "^5.10.2",
+    "mongoose-auto-increment": "^5.0.1",
     "mysql": "^2.18.1",
     "pg": "^8.3.3",
     "react": "^16.13.1",
