@@ -1,38 +1,38 @@
 const client = require('./config.js');
 
-const getRestaurantInfo = function (restaurantId, callback) {
+const getRestaurantInfo = function (restaurantId, cb) {
   console.time(`Restaurant id ${restaurantId}`);
   client.query(`SELECT * FROM restaurants WHERE id = ${restaurantId}`, (error, {rows}) => {
     if (error) {
-      callback(error, null);
+      cb(error, null);
       return;
     }
     console.timeEnd(`Restaurant id ${restaurantId}`);
-    callback(null, rows);
+    cb(null, rows);
   });
 };
 
-const getRestaurantArticles = function (restaurantId, callback) {
+const getRestaurantArticles = function (restaurantId, cb) {
   console.time(`Restaurant id ${restaurantId}`);
   client.query(`SELECT * FROM articles WHERE restaurant_id = ${restaurantId}`, (error, {rows}) => {
     if (error) {
-      callback(error, null);
+      cb(error, null);
       return;
     }
     console.timeEnd(`Restaurant id ${restaurantId}`);
-    callback(null, rows);
+    cb(null, rows);
   });
 };
 
-const getRestaurantFeatures = function (restaurantId, callback) {
+const getRestaurantFeatures = function (restaurantId, cb) {
   console.time(`Restaurant id ${restaurantId}`);
   client.query(`SELECT * FROM features WHERE restaurant_id = ${restaurantId}`, (error, {rows}) => {
     if (error) {
-      callback(error, null);
+      cb(error, null);
       return;
     }
     console.timeEnd(`Restaurant id ${restaurantId}`);
-    callback(null, rows);
+    cb(null, rows);
   });
 };
 
