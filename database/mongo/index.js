@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 const db = mongoose.connection;
-const autoIncrement = require('mongoose-auto-increment');
 const connection = mongoose.createConnection('mongodb://localhost/zagattips');
 mongoose.connect('mongodb://localhost/zagattips');
 db.on('connected', () => console.log('Mongoose is connected!'));
-
-autoIncrement.initialize(connection);
 
 let restaurantSchema = new mongoose.Schema({
   restaurant_name: String,
@@ -16,13 +13,6 @@ let restaurantSchema = new mongoose.Schema({
   dish_image2: Number,
   dish_image3: Number,
   tip: String
-});
-
-restaurantSchema.plugin(autoIncrement.plugin, {
-  model: 'Restaurant',
-  field: 'id',
-  startAt: 1,
-  incrementBy: 1
 });
 
 let Restaurant = mongoose.model('Restaurant', restaurantSchema);
