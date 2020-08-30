@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/mysql/model.js');
+const db = require('../database/postgres/model.js');
 const path = require('path');
 const cors = require('cors');
 
@@ -51,7 +51,8 @@ app.post('/api/restaurant', (req, res) => {
 });
 
 app.delete('/api/restaurant/:id', (req, res) => {
-  db.removeRestaurant(req.params.id, (data) => {
+  const restaurantId = req.params.id;
+  db.removeRestaurant(restaurantId, (err) => {
     res.sendStatus(err ? 500 : 200);
   });
 });
