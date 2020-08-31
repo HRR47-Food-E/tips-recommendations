@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/postgres/model.js');
+const db = require('../database/mongo/model.js');
 const path = require('path');
 const cors = require('cors');
 
@@ -44,6 +44,12 @@ app.get(`/api/features/:id`, (req, res) => {
   });
 });
 
+app.get('/api/restaurant/:id', (req, res) => {
+  db.fetch(req.params.id, (err, data) => {
+    err ? res.sendStatus(500) : res.send(data);
+  })
+})
+
 app.post('/api/restaurant', (req, res) => {
   db.addRestaurant(req.body, (err) => {
     res.sendStatus(err ? 500 : 200);
@@ -51,8 +57,7 @@ app.post('/api/restaurant', (req, res) => {
 });
 
 app.delete('/api/restaurant/:id', (req, res) => {
-  const restaurantId = req.params.id;
-  db.removeRestaurant(restaurantId, (err) => {
+  db.removeRestaurant(req.params.id, (err, data) => {
     res.sendStatus(err ? 500 : 200);
   });
 });
