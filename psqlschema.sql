@@ -30,3 +30,6 @@ CREATE TABLE "features" (
   title VARCHAR(255),
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE
 );
+
+CREATE INDEX article_idx ON articles (restaurant_id);
+CREATE INDEX feature_idx ON features (restaurant_id);
