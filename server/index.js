@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/mongo/model.js');
+const db = require('../database/postgres/model.js');
 const path = require('path');
 const cors = require('cors');
 
