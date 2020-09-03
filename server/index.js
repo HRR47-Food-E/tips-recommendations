@@ -1,8 +1,8 @@
+require('newrelic');
 const express = require('express');
 const db = require('../database/postgres/model.js');
 const path = require('path');
 const cors = require('cors');
-require('newrelic');
 
 const app = express();
 const port = 3003;
