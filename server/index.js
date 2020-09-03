@@ -15,41 +15,23 @@ app.use('/:id', express.static('client/dist'));
 app.get(`/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
   db.getRestaurantInfo(restaurantId, (error, data) => {
-    if (error) {
-      console.log('Error at server/restaurants GET request');
-    } else {
-      res.send(data);
-    }
+    err ? res.sendStatus(500) : res.send(data);
   });
 });
 
 app.get(`/api/articles/:id`, (req, res) => {
   const restaurantId = req.params.id;
   db.getRestaurantArticles(restaurantId, (error, data) => {
-    if (error) {
-      console.log('Error at server/articles GET request');
-    } else {
-      res.send(data);
-    }
+    err ? res.sendStatus(500) : res.send(data);
   });
 });
 
 app.get(`/api/features/:id`, (req, res) => {
   const restaurantId = req.params.id;
   db.getRestaurantFeatures(restaurantId, (error, data) => {
-    if (error) {
-      console.log('Error at server/articles GET request');
-    } else {
-      res.send(data);
-    }
+    err ? res.sendStatus(500) : res.send(data);
   });
 });
-
-app.get('/api/restaurant/:id', (req, res) => {
-  db.fetch(req.params.id, (err, data) => {
-    err ? res.sendStatus(500) : res.send(data);
-  })
-})
 
 app.post('/api/restaurant', (req, res) => {
   db.addRestaurant(req.body, (err) => {

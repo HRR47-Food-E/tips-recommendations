@@ -27,6 +27,7 @@ const seedDatabase = () => {
                 console.log('Article indexes added!');
                 client.query(featureIdx)
                 .then(() => {
+                  console.log('Feature indexes added!');
                   client.end();
                   console.timeEnd('seed');
                 });
