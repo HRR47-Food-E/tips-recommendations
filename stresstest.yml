@@ -1,24 +1,26 @@
 config:
-  target: "http://localhost:3003"
+  target: "http://localhost:3003/api"
   phases:
     - duration: 30
-      arrivalRate: 5
-      name: Warm up
+      arrivalRate: 1
+      name: 1 RPS
+    - duration: 30
+      arrivalRate: 10
+      name: 10 RPS
     - duration: 60
-      arrivalRate: 5
-      rampTo: 50
-      name: Ramp up
-    - duration: 300
-      arrivalRate: 50
-      name: Sustained load
+      arrivalRate: 100
+      name: 100 RPS
+    - duration: 120
+      arrivalRate: 1000
+      name: 1000 rps
 scenarios:
   - flow:
     - get:
-        url: "/api/tips/{{ $randomNumber(9000000, 10000000) }}"
+        url: "/tips/{{ $randomNumber(9000000, 10000000) }}"
         capture:
           json: "$[0].id"
           as: "id"
     - get:
-        url: "/api/articles/{{ id }}"
+        url: "/articles/{{ id }}"
     - get:
-        url: "/api/features/{{ id }}"
+        url: "/features/{{ id }}"
