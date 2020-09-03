@@ -1,7 +1,7 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writeStream = fs.createWriteStream('./database/data.json');
+const writeStream = fs.createWriteStream('./database/data-generation/data.json');
 
 // Generates data for 10 million primary records
 const writeData = (writer, cb) => {

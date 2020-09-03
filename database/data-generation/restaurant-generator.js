@@ -1,7 +1,7 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writeStream = fs.createWriteStream('./database/restaurant-data.csv');
+const writeStream = fs.createWriteStream('./database/data-generation/restaurant-data.csv');
 
 // Generates restaurant data for 10 million primary records
 const writeRestaurantData = (writer, cb) => {

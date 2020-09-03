@@ -1,7 +1,7 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writeStream = fs.createWriteStream('./database/article-data.csv');
+const writeStream = fs.createWriteStream('./database/data-generation/article-data.csv');
 
 // Generates article data for 10 million primary records
 const writeArticleData = (writer, cb) => {
