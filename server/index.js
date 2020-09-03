@@ -14,21 +14,21 @@ app.use('/:id', express.static('client/dist'));
 
 app.get(`/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
-  db.getRestaurantInfo(restaurantId, (error, data) => {
+  db.getRestaurantInfo(restaurantId, (err, data) => {
     err ? res.sendStatus(500) : res.send(data);
   });
 });
 
 app.get(`/api/articles/:id`, (req, res) => {
   const restaurantId = req.params.id;
-  db.getRestaurantArticles(restaurantId, (error, data) => {
+  db.getRestaurantArticles(restaurantId, (err, data) => {
     err ? res.sendStatus(500) : res.send(data);
   });
 });
 
 app.get(`/api/features/:id`, (req, res) => {
   const restaurantId = req.params.id;
-  db.getRestaurantFeatures(restaurantId, (error, data) => {
+  db.getRestaurantFeatures(restaurantId, (err, data) => {
     err ? res.sendStatus(500) : res.send(data);
   });
 });
