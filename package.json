@@ -61,11 +61,15 @@
   "scripts": {
     "airbnb": "eslint --ignore-path .gitignore .",
     "build": "webpack --config webpack.config.js",
-    "mysqlschema": "mysql -u root < mysqlschema.sql;",
-    "seed": "node database/seed.js",
+    "mysql-schema": "mysql -u root < mysqlschema.sql;",
+    "seed-mysql": "node database/mysql/seed.js",
+    "seed-psql": "node database/postgres/seed.js",
     "server": "nodemon server/index.js",
     "test": "jest",
-    "data-gen": "node database/generator.js"
+    "restaurant-gen": "node database/data-generation/restaurant-generator.js",
+    "article-gen": "node database/data-generation/article-generator.js",
+    "feature-gen": "node database/data-generation/feature-generator.js",
+    "json-gen": "node database/data-generation/data-generator.js"
   },
   "repository": {
     "type": "git",
