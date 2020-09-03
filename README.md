@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/tagaz/photo-carousel-service
+  - https://github.com/tagaz/info-sidebar-service
+  - https://github.com/tagaz/similar-restaurants-service
 
 ## Table of Contents
 
@@ -18,14 +17,90 @@
 
 ## Usage
 
-> Some usage instructions
+> 1. Install dependencies
+```sh
+npm i
+```
+
+> 2. Build webpack bundle
+```sh
+npm run build
+```
+
+> 3. Install and set up PostgreSQL (If PostgreSQL is already installed, skip to the command in this step that reads: "createdb zagattips")
+
+```sh
+brew doctor
+```
+
+```sh
+brew update
+```
+
+```sh
+brew install postgres
+```
+
+```sh
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+```
+
+```sh
+alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+```
+
+```sh
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+```
+
+```sh
+pg_start
+```
+
+```sh
+createdb 'zagattips'
+```
+
+```sh
+psql zagattips
+```
+
+```sh
+\i psqlschema.sql;
+```
+
+> 4. Generate Data
+
+- The data generation process writes data to three csv files
+- You can open up three terminals and run the following commands simultaniously for faster data generation
+
+```sh
+npm run restaurant-gen
+```
+
+```sh
+npm run article-gen
+```
+
+```sh
+npm run feature-gen
+```
+
+> 5. Seed PostgreSQL database
+
+```sh
+npm run seed-psql
+```
+
+> 6. Start server
+
+```sh
+npm run server
+```
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
 
 ## Development
 
