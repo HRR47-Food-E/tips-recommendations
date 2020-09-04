@@ -69,7 +69,8 @@
     "restaurant-gen": "node database/data-generation/restaurant-generator.js",
     "article-gen": "node database/data-generation/article-generator.js",
     "feature-gen": "node database/data-generation/feature-generator.js",
-    "json-gen": "node database/data-generation/data-generator.js"
+    "json-gen": "node database/data-generation/data-generator.js",
+    "loadtest": "artillery run stresstest.yml"
   },
   "repository": {
     "type": "git",
