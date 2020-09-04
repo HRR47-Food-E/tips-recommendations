@@ -4,18 +4,18 @@ config:
     pool: 10
   phases:
     - duration: 30
-      arrivalRate: 5
+      arrivalRate: 1
       name: Warm up
     - duration: 60
-      arrivalRate: 5
-      rampTo: 50
+      arrivalRate: 1
+      rampTo: 10
       name: Ramp up
     - duration: 180
-      arrivalRate: 50
+      arrivalRate: 10
       name: Sustained load
 scenarios:
   - flow:
     - loop:
       - get:
           url: "/{{ $randomNumber(9000000, 10000000) }}"
-      count: 10
+      count: 100
