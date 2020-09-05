@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   fetchRestaurant(i) {
-    axios.get(`http://localhost:3003/api/tips/${i}`)
+    axios.get(`/api/tips/${i}`)
       .then((response) => {
         const data = response.data[0];
         this.setState({
@@ -69,7 +69,7 @@ class App extends React.Component {
   }
 
   fetchArticles(i) {
-    axios.get(`http://localhost:3003/api/articles/${i}`)
+    axios.get(`/api/articles/${i}`)
       .then(({ data }) => {
         data.forEach(el => { el.image = el.image.toString().padStart(4, 0) })
         this.setState({ articles: data });
@@ -83,7 +83,7 @@ class App extends React.Component {
   }
 
   fetchFeatures(i) {
-    axios.get(`http://localhost:3003/api/features/${i}`)
+    axios.get(`/api/features/${i}`)
       .then(({ data }) => {
         this.setState({ features: data });
       })

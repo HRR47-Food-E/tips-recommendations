@@ -1,10 +1,10 @@
 const client = require('./config.js');
 
-const addRestaurants = `COPY restaurants(restaurant_name,dish_name1,dish_name2,dish_name3,dish_image1,dish_image2,dish_image3,tip) FROM '${__dirname + '/../data-generation/restaurant-data.csv'}' DELIMITER ',' CSV HEADER;`;
+const addRestaurants = `COPY restaurants(restaurant_name,dish_name1,dish_name2,dish_name3,dish_image1,dish_image2,dish_image3,tip) FROM '${__dirname + '/restaurant-data.csv'}' DELIMITER ',' CSV HEADER;`;
 
-const addArticles = `COPY articles(restaurant_id,title,image) FROM '${__dirname + '/../data-generation/article-data.csv'}' DELIMITER ',' CSV HEADER;`;
+const addArticles = `COPY articles(restaurant_id,title,image) FROM '${__dirname + '/article-data.csv'}' DELIMITER ',' CSV HEADER;`;
 
-const addFeatures = `COPY features(restaurant_id,title) FROM '${__dirname + '/../data-generation/feature-data.csv'}' DELIMITER ',' CSV HEADER;`;
+const addFeatures = `COPY features(restaurant_id,title) FROM '${__dirname + '/feature-data.csv'}' DELIMITER ',' CSV HEADER;`;
 
 const articleIdx = 'CREATE INDEX article_idx ON articles (restaurant_id);';
 
