@@ -1,7 +1,5 @@
 config:
   target: "http://localhost:3003/api"
-  http:
-    pool: 1
   phases:
     - duration: 30
       arrivalRate: 1
@@ -25,4 +23,4 @@ scenarios:
           url: "/articles/{{ id }}"
       - get:
           url: "/features/{{ id }}"
-      count: 100
+      count: 50

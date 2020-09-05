@@ -1,8 +1,8 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
 const connectionString = `postgres://postgres:@localhost/zagattips`
 
-const client = new Client({ connectionString });
+const client = new Pool({ connectionString });
 
 client.connect();
 
