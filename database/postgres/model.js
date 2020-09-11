@@ -1,19 +1,19 @@
 const client = require('./config.js');
 
-const getRestaurantInfo = function (restaurantId, cb) {
-  client.query(`SELECT * FROM restaurants WHERE id = ${restaurantId}`, (err, {rows}) => {
+const getRestaurantInfo = function (query, restaurantId, cb) {
+  client.query(query, (err, {rows}) => {
     err ? cb(err) : cb(null, rows);
   });
 };
 
-const getRestaurantArticles = function (restaurantId, cb) {
-  client.query(`SELECT * FROM articles WHERE restaurant_id = ${restaurantId}`, (err, {rows}) => {
+const getRestaurantArticles = function (query, restaurantId, cb) {
+  client.query(query, (err, {rows}) => {
     err ? cb(err) : cb(null, rows);
   });
 };
 
-const getRestaurantFeatures = function (restaurantId, cb) {
-  client.query(`SELECT * FROM features WHERE restaurant_id = ${restaurantId}`, (err, {rows}) => {
+const getRestaurantFeatures = function (query, restaurantId, cb) {
+  client.query(query, (err, {rows}) => {
     err ? cb(err) : cb(null, rows);
   });
 };
