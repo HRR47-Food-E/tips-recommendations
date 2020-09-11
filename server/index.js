@@ -1,4 +1,4 @@
-require('newrelic');
+require ('newrelic');
 const express = require('express');
 const db = require('../database/postgres/model.js');
 const path = require('path');
@@ -6,7 +6,9 @@ const cors = require('cors');
 
 const app = express();
 const port = 3003;
-
+app.get('/loaderio-29e8d3739ccfe023c347e8d4798201e0', (req, res) => {
+  res.send('loaderio-29e8d3739ccfe023c347e8d4798201e0');
+})
 app.use(cors());
 app.use(express.json());
 app.use(express.static('client/dist'));
