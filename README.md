@@ -4,9 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/tagaz/photo-carousel-service
-  - https://github.com/tagaz/info-sidebar-service
-  - https://github.com/tagaz/similar-restaurants-service
+  - https://github.com/HRR47-Food-E/photo-carousel-service
+  - https://github.com/HRR47-Food-E/info-sidebar-service
+  - https://github.com/HRR47-Food-E/similar-restaurants-service
 
 ## Table of Contents
 
