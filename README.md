@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> This repository hosts the tips-recommendations component of the Food-E project. Food-E is an interactive restaurant rating application, that has been optimized to perform well with millions of users and thousands of server requests per second. The server is built with Node.js and Express, and records are being stored using a PostgreSQL database and a Redis cache.
 
 ## Related Projects
 
